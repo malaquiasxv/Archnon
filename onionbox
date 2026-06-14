@@ -196,13 +196,17 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-if ss -tulpn | grep -iE "6969|9150|9151" >/dev/null 2>&1; then
+if ss -tulpn | grep -iE "6969|9150|9151|9140" >/dev/null 2>&1; then
    echo -e "\n${P}[${GREEN}INFO${P}]${GREEN} TheOnionBox is already running${NC}"
    exit 1
 fi
 
 sudo setenforce 0 >/dev/null 2>&1
 sudo semanage permissive -a unconfirmed_t >/dev/null 2>&1
+
+modprobe nft_nat >/dev/null 2>&1
+modprobe nft_chain_nat >/dev/null 2>&1
+modprobe nf_nat >/dev/null 2>&1
 
 sudo nft flush ruleset
 
@@ -257,8 +261,9 @@ sudo nft add rule ip onionbox_nat tor_nat_out tcp redirect to 6969
    sleep 4
 
    sudo -u $TOR_USER tor --RunAsDaemon 1 >/dev/null 2>&1
-   echo -e "\n${BLUE}[${GREEN}STATUS${BLUE}]${GREEN} TheOnionBox is running${BLUE}(${GREEN}done${BLUE}"
+   echo -e "\n${BLUE}[${GREEN}STATUS${BLUE}]${GREEN} TheOnionBox is running${BLUE}(${GREEN}done${BLUE})${NC}"
 }
+
 config(){
 
 if ! cat /etc/tor/torrc | grep -iE "UseBridges 1" >/dev/null 2>&1; then
