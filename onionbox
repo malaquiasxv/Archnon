@@ -221,13 +221,11 @@ sudo nft add rule inet onionbox_filter filter_input ct state established,related
 sudo nft add rule inet onionbox_filter filter_input ip daddr 127.0.0.1 udp dport 5353 accept
 sudo nft add rule inet onionbox_filter filter_input ip daddr 127.0.0.1 tcp dport 6969 accept
 
-sudo nft add rule inet onionbox_filter filter_output oifname "lo" accept
-sudo nft add rule inet onionbox_filter filter_output ct state { established, related } accept
-sudo nft add rule inet onionbox_filter filter_output ct state new tcp flags & (syn | rst | ack | fin) == syn accept
 
-sudo nft add rule inet onionbox_filter filter_output ip daddr != 127.0.0.0/8 udp dport 53 accept
-sudo nft add rule inet onionbox_filter filter_output ip daddr != 127.0.0.0/8 tcp dport 53 accept
-sudo nft add rule inet onionbox_filter filter_output ip daddr != 127.0.0.0/8 tcp dport { 80, 443 } accept
+sudo nft add rule inet onionbox_filter filter_output ct state established,related accept
+
+sudo nft add rule inet onionbox_filter filter_output skgid "netdev" accept
+sudo nft add rule inet onionbox_filter filter_output oifname "lo" accept
 
 sudo nft add rule inet onionbox_filter filter_output skuid "$TOR_USER" accept
 sudo nft add rule inet onionbox_filter filter_output ip daddr 127.0.0.1 udp dport 5353 accept
@@ -237,9 +235,7 @@ sudo nft add rule inet onionbox_filter filter_output reject
 sudo nft add table ip onionbox_nat
 sudo nft add chain ip onionbox_nat tor_nat_out { type nat hook output priority -100 \; policy accept \; }
 
-sudo nft add rule ip onionbox_nat tor_nat_out ip daddr != 127.0.0.0/8 udp dport 53 return
-sudo nft add rule ip onionbox_nat tor_nat_out ip daddr != 127.0.0.0/8 tcp dport 53 return
-sudo nft add rule ip onionbox_nat tor_nat_out ip daddr != 127.0.0.0/8 tcp dport { 80, 443 } return
+sudo nft add rule ip onionbox_nat tor_nat_out skgid "netdev" return
 
 sudo nft add rule ip onionbox_nat tor_nat_out skuid "$TOR_USER" return
 sudo nft add rule ip onionbox_nat tor_nat_out ip daddr { 127.0.0.0/8, 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 169.254.0.0/16 } return
