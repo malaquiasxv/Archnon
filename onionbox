@@ -20,7 +20,7 @@ if ! (command -v nc >/dev/null 2>&1 && command -v curl >/dev/null 2>&1 && comman
 
        if [[ $(command -v apt) ]]; then
            
-           pkgs=( openbsd-netcat tor curl nftables procps network-manager iproute2 coreutils util-linux bash sudo ) 
+           pkgs=( netcat-openbsd tor curl nftables procps network-manager iproute2 coreutils util-linux bash sudo ) 
 
            if ! apt-get update && apt install "${pkgs[@]}" -y; then
 	          echo -e "${RED}[${GREEN}ERR${RED}]${GREEN} Ahh.. sorry if TheOnionBox is not being perfect.. But there are some missing dependencies... Please, can you install: ${YELLOW}(${GREEN}${pkgs[@]}${YELLOW})${NC}"
