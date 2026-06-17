@@ -144,7 +144,7 @@ fi
 
 help(){
    echo -e "\n${RED}<--- [${GREEN} TheOnionBox-nft's help page ${RED}] --->${NC}"
-   echo -e "\n${RED}[${YELLOW}WARN${RED}]${GREEN} You are using the nftables version, this may cause your system lose the dns resolution via normal curl, for this you must use the ${YELLOW}'-l' ${GREEN}flag below${NC}"
+   echo -e "\n${RED}[${YELLOW}WARN${RED}]${GREEN} You are using the nftables version${NC}"
    echo -e "\n${P}[${NC}0${P}]${NC} --start|-start|start: ${GREEN}Start TheOnionBox-nft and Applies Firewall rules(Tor only)${NC}"
    echo -e "\n${P}[${NC}1${P}]${NC} --stop|-stop|stop: ${GREEN}Stop TheOnionBox-nft and Flushes Firewall rules(accept all)${NC}"
    echo -e "\n${P}[${NC}2${P}]${NC} --restart|-restart|restart: ${GREEN}Restart TheOnionBox-nft and Firewall rules(Tor only)${NC}"
