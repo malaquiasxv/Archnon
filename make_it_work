@@ -14,11 +14,11 @@ NC="\e[0m"
 
 
 if [ $EUID -ne 0 ]; then
-    echo -e "\n${RED}[${GREEN}ERR${RED}]${GREEN} Run as ${RED}root${NC}"
+    echo -e "\n${RED}[${GREEN}err${RED}]${GREEN}Bad usage: user is not ${RED}root${NC}"
     exit 1
 fi
 
 chmod +x * >/dev/null 2>&1
 
-mv onionbox-nft onionbox osh oshnft /usr/bin >/dev/null && echo -e "\n${BLUE}[${GREEN}STATUS${BLUE}]${GREEN} Now you can try ${YELLOW}'onionbox start'${GREEN} or, ${YELLOW}'onionbox-nft start'${GREEN} if you prefer an nftables firewall${BLUE}(${GREEN}done${BLUE})${NC}" || echo -e "\n${RED}[${GREEN}ERR${RED}]${GREEN} Stop changing the name of the script, you will have to move it manually${NC}" | exit 1
+mv archnon-nft archnon /usr/bin >/dev/null 2>&1 && echo -e "\n${BLUE}[${GREEN}notice${BLUE}]${GREEN} Files are part of your path, try: ${YELLOW}'archnon start/archnon-nft start'${NC}" || echo -e "\n${RED}[${GREEN}err${RED}]${GREEN} Stop changing the name of the script, you will have to move it manually${NC}"
 
