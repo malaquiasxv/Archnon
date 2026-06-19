@@ -46,7 +46,7 @@
 [13] --help|-help|help|-h: <-----> Prints this help page.
 
 # [ Clone ] #
-- git clone https://github.com/0xmalaquias/ArchNoN && cd ArchNoN && chmod +x * && ./make_it_work
+- As root: git clone https://github.com/0xmalaquias/ArchNoN && cd ArchNoN && chmod +x * && ./make_it_work
 
 # [ Boot ] #
 [*] Supported service managers are: Open-RC, Systemd and Runit only.
