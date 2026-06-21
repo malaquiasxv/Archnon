@@ -44,7 +44,9 @@
 
 - config-show --> Show configuration files that were touched by ArchNoN (/etc/tor/torrc, /etc/resolv.conf).
 
-- config-load --> Load a custom Torrc(that is the file tor reads before start), usage: sudo archnon config-load <file>. 
+- config-load --> Load a custom Torrc(that is the file tor reads before start), usage: sudo archnon config-load <file>.
+
+- config-firewall --> Show used Firewall rules(/etc/archnon_rules.nft) 
 
 - resolv --> Resolves .onion addresses.
 
