@@ -21,7 +21,7 @@ NC="\e[0m"
 # Banner
 
 echo -e "\n${BLUE}$~ [ ${LB}ArchNoN Privacy Util ${YELLOW}v3.0.8 ${BLUE}] ~$ ${NC}"
-echo -e "${LB}[${GREEN}*${LB}]${YELLOW} by: ${ORANGE}newmasterone27@gmail.com ${NC}"
+echo -e "${LB}[${GREEN}*${LB}]${YELLOW} Developed by: ${ORANGE}newmasterone27@gmail.com ${NC}"
 
 # Dependencies && pkg managers
 
